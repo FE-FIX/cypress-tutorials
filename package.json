@@ -1,0 +1,34 @@
+{
+  "name": "real-world-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:run": "npx cypress run",
+    "cypress:e2e": "start-test start http-get://localhost:4200 cypress:run",
+    "cy:dev": "npx cypress open --env username=fefe+dev@cytest.com,password=admin123",
+    "cy:qa": "npx cypress open --env username=fefe@cytest.com,password=admin123",
+    "cy:process": "npx cypress open --env username=$DB_USERNAME,password=$PASSWORD",
+    "cy:process:run": "npx cypress run --env username=$DB_USERNAME,password=$PASSWORD",
+    "delete:reports": "rm -r cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
+    "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
+    "cypress:complete:run": "npm run prereport && npm run cy:process:run; npm run junit:merge; npm run mochawesome:merge" 
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.1.0",
+    "cypress-multi-reporters": "^2.0.5",
+    "junit-merge": "^2.0.0",
+    "mocha": "^11.1.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "start-server-and-test": "^2.0.10"
+  }
+}
