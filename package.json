@@ -9,6 +9,7 @@
     "cypress:e2e": "start-test start http-get://localhost:4200 cypress:run",
     "cy:dev": "npx cypress open --env username=fefe+dev@cytest.com,password=admin123",
     "cy:qa": "npx cypress open --env username=fefe@cytest.com,password=admin123",
+    "cy:qa_run": "npx cypress run --env username=fefe@cytest.com,password=admin123",
     "cy:process": "npx cypress open --env username=$DB_USERNAME,password=$PASSWORD",
     "cy:process:run": "npx cypress run --env username=$DB_USERNAME,password=$PASSWORD",
     "delete:reports": "rm -r cypress/results/* || true",
@@ -16,7 +17,13 @@
     "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
     "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
     "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
-    "cypress:complete:run": "npm run prereport && npm run cy:process:run; npm run junit:merge; npm run mochawesome:merge" 
+    "cypress:complete:run": "npm run prereport && npm run cy:process:run; npm run junit:merge; npm run mochawesome:merge",
+    "cy:first_spec": "npx cypress run --env username=fefe@cytest.com,password=admin123 --spec 'cypress/e2e/firstTest.spec.js' --browser chrome",
+    "cy:first_spec_h": "npx cypress run --env username=fefe@cytest.com,password=admin123 --spec 'cypress/e2e/firstTest.spec.js' --browser chrome --headed",
+    "cy:run_specs": "npx cypress run --env username=fefe@cytest.com,password=admin123 --browser chrome",
+    "cy:run_specs_h": "npx cypress run --env username=fefe@cytest.com,password=admin123 --browser chrome --headed --record --key 27de9ae5-19a1-423c-a5e3-8909ec989430",
+    "cy:run_specs_hl": "npx cypress run --env username=fefe@cytest.com,password=admin123 --headless --record --key 27de9ae5-19a1-423c-a5e3-8909ec989430",
+    "cy:run_parall_browsers": "npm run cy:run_specs_hl --browser chrome --group Chrome --ci-build-id 1 & npm run cy:run_specs_hl --browser electron --group Chrome --ci-build-id 1"
   },
   "author": "",
   "license": "ISC",

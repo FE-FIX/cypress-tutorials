@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="3.301" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2025-03-05T12:55:05" tests="0" file="cypress/e2e/firstTest.spec.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="Testing with BE" timestamp="2025-03-05T12:55:05" tests="1" time="3.295" failures="0">
-    <testcase name="Testing with BE verify popular tags are displayed" time="3.257" classname="verify popular tags are displayed">
-    </testcase>
-  </testsuite>
-</testsuites>

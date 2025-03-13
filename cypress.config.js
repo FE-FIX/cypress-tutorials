@@ -1,9 +1,11 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'z6fn6o',
   viewportHeight: 1080,
   viewportWidth: 1920,
-  video: false,
+  video: true,
+  experimentalWebKitSupport: true, //On Mac, the following should be installed: npm install --save-dev playwright-webkit. Then '--browser webkit' is required on the scripts.
   reporter: "cypress-multi-reporters",
   reporterOptions: {
     configFile: "reporter-config.json"

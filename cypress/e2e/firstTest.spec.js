@@ -7,7 +7,7 @@ describe('Testing with BE', () => {
   });
 
 
-  it('verify correct request and response', () => {
+  it('verify correct request and response', {browser:'!chrome'}, () => {
     
     cy.intercept('POST', 'https://api.realworld.io/api/articles/').as('postArticles');//URL response might be 422 if post with same title!!
     //https://conduit-api.bondaracademy.com/api/articles/
@@ -74,7 +74,7 @@ describe('Testing with BE', () => {
     });
   });
 
-  it.only('verify popular tags are displayed', () => {
+  it.only('verify popular tags are displayed', () => {//This will ONLY execute under firefox browser. Skipped on every other browser. 
     cy.get('.tag-list')
     .should('contain', 'cypress')
     .should('contain', 'automation')
